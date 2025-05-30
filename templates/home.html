@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Prediction Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #00b4db, #0083b0);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffe600;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Diabetes Prediction</h1>
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <input type="text" name="Pregnancies" placeholder="Pregnancies" required>
+            <input type="text" name="Glucose" placeholder="Glucose" required>
+            <input type="text" name="BloodPressure" placeholder="Blood Pressure" required>
+            <input type="text" name="SkinThickness" placeholder="Skin Thickness" required>
+            <input type="text" name="Insulin" placeholder="Insulin" required>
+            <input type="text" name="BMI" placeholder="BMI" required>
+            <input type="text" name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" required>
+            <input type="text" name="Age" placeholder="Age" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result %}
+        <div class="result">Prediction: {{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

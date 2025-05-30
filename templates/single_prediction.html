@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: {% if result == 'Diabetic' %}
+                            linear-gradient(to right, #ff4e50, #f9d423);
+                        {% else %}
+                            linear-gradient(to right, #56ab2f, #a8e063);
+                        {% endif %};
+            color: white;
+        }
+
+        .result-box {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        .result-box h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .result-box p {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            margin-top: 30px;
+            padding: 12px 25px;
+            font-size: 18px;
+            background-color: #ffffff;
+            color: #333;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h1>Prediction Result</h1>
+        <p>The person is: <strong>{{ result }}</strong></p>
+        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>
